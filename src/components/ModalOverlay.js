@@ -1,8 +1,11 @@
 import React from 'react';
+import styles from './modal.module.css';
 
-function ModalOverlay () {
+function ModalOverlay (props) {
     return (
-        <div>ModalOverlay</div>
+        <div className={styles.modal_overlay}>
+            {props.children}
+        </div>
     )
 }
 

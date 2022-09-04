@@ -1,8 +1,8 @@
 import React from 'react';
 
-function IngredientDetails () {
+function IngredientDetails ({ activeIngredient }) {
     return (
-        <div>IngredientDetails</div>
+        <div>{activeIngredient.name}</div>
     )
 }
 

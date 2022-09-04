@@ -1,0 +1,30 @@
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu_items {
+    display: flex;
+    align-items: center;
+}
+
+.menu_item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu_item > span {
+    color: #8585AD;
+}
+
+.menu_item_active > span {
+    color: white;
+}
+
+.menu_profile {
+    display: flex;
+    align-items: center;
+    color: #8585AD;
+}

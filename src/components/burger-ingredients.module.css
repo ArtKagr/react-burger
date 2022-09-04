@@ -1,0 +1,43 @@
+.tabs {
+    display: flex;
+    align-items: center;
+}
+
+.burger_ingredients {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    overflow: hidden;
+}
+
+.ingredients {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.ingredients_category {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ingredient {
+    width: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.ingredient > span {
+    text-align: center;
+}
+
+.ingredient_counter {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
