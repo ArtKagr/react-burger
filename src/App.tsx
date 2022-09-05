@@ -46,7 +46,7 @@ function App() {
          />
       </div>
         <div style={{overflow: 'hidden'}}>{
-            modalVisible && <Modal source={modalSource} activeIngredient={activeIngredient}></Modal>}</div>
+            modalVisible && <Modal source={modalSource} activeIngredient={activeIngredient} setModalVisible={setModalVisible}></Modal>}</div>
     </div>
   );
 }
