@@ -1,6 +1,8 @@
 import {Button, ConstructorElement, CurrencyIcon, DragIcon} from '@ya.praktikum/react-developer-burger-ui-components';
+import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './burger-constructor.module.css'
+import { IngredientType } from "../proptypes/proptypes";
 
 function BurgerConstructor ({ ingredients, setModalVisible, setModalSource }) {
     const [order, setOrder] = React.useState([
@@ -95,6 +97,12 @@ function BurgerConstructor ({ ingredients, setModalVisible, setModalSource }) {
             </div>
         </div>
         )
+}
+
+BurgerConstructor.propTypes = {
+   ingredients: PropTypes.arrayOf(IngredientType.isRequired).isRequired,
+   setModalVisible: PropTypes.func.isRequired,
+   setModalSource: PropTypes.func.isRequired
 }
 
 export default BurgerConstructor;

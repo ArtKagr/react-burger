@@ -1,7 +1,9 @@
 .menu {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    padding: 16px 0;
+    margin-bottom: 40px;
 }
 
 .menu_items {
@@ -13,10 +15,13 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    margin-right: 8px;
+    padding: 16px 20px;
 }
 
 .menu_item > span {
     color: #8585AD;
+    margin-left: 8px;
 }
 
 .menu_item_active > span {
@@ -27,4 +32,10 @@
     display: flex;
     align-items: center;
     color: #8585AD;
+    padding: 16px 20px;
+    cursor: pointer;
+}
+
+.menu_profile > span {
+    margin-left: 8px;
 }

@@ -1,4 +1,5 @@
 import { Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './appheader.module.css';
 
@@ -32,6 +33,11 @@ function AppHeader ({ activeMenuItemId, setActiveMenuItemId }) {
             </div>
         </div>
     );
+}
+
+AppHeader.propTypes = {
+    activeMenuItemId: PropTypes.number,
+    setActiveMenuItemId: PropTypes.func
 }
 
 export default AppHeader;

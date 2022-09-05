@@ -1,6 +1,7 @@
 .tabs {
     display: flex;
     align-items: center;
+    margin-bottom: 40px;
 }
 
 .burger_ingredients {
@@ -8,6 +9,14 @@
     flex-direction: column;
     width: 600px;
     overflow: hidden;
+    margin-right: 40px;
+    margin-bottom: 40px;
+}
+
+.burger_ingredients_title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .ingredients {
@@ -21,6 +30,13 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.ingredients_category_title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
 }
 
 .ingredient {
@@ -40,4 +56,15 @@
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.ingredient_container {
+    margin: 4px 0;
+    display: flex;
+    align-items: center;
+}
+
+.ingredient_container_number {
+    font-size: 28px;
+    margin-right: 8px;
 }

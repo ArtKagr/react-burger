@@ -35,7 +35,7 @@ function BurgerIngredients ({ ingredients, activeTab, setActiveTab, setModalVisi
 
     return (
         <div className={styles.burger_ingredients}>
-            <span>Соберите бургер</span>
+            <span className={styles.burger_ingredients_title}>Соберите бургер</span>
             <div className={styles.tabs}>{
                 tabs.map((tab) => (
                     <Tab key={tab.id} active={tab.id === activeTab.id} value={''} onClick={() => setActiveTab(tab)}>
@@ -46,14 +46,14 @@ function BurgerIngredients ({ ingredients, activeTab, setActiveTab, setModalVisi
             <div className={styles.ingredients}>
                 {tabs.map((tab) => (
                     <>
-                        <span key={`name-${tab.id}`}>{tab.name}</span>
+                        <span className={styles.ingredients_category_title} key={`name-${tab.id}`}>{tab.name}</span>
                         <div key={`category-${tab.id}`} className={styles.ingredients_category}>
                             {tab.items.map((ingredient) => (
                                 <div key={ingredient._id} className={styles.ingredient} onClick={() => updateStates(true, ingredient)}>
                                     <Counter className={styles.ingredient_counter} count={1} />
                                     <img src={ingredient.image} alt={`ingredient_${ingredient._id}`} />
-                                    <div>
-                                        <span>{ingredient.price}</span>
+                                    <div className={styles.ingredient_container}>
+                                        <span className={styles.ingredient_container_number}>{ingredient.price}</span>
                                         <CurrencyIcon key={`currency-icon-${ingredient._id}`} type={'primary'} />
                                     </div>
                                     <span>{ingredient.name}</span>
