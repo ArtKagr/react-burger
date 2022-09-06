@@ -1,101 +1,101 @@
 .modal_overlay {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .modal {
-    position: relative;
-    width: 720px;
-    border-radius: 40px;
-    background-color: #1C1C21;
-    border: 1px solid rgba(76, 76, 255, 0.2);
-    box-shadow: 0 24px 32px rgba(0, 0, 0, 0.04), 0 16px 24px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.04);
-    padding: 40px 40px 60px 40px;
+  position: relative;
+  width: 720px;
+  border-radius: 40px;
+  background-color: #1C1C21;
+  border: 1px solid rgba(76, 76, 255, 0.2);
+  box-shadow: 0 24px 32px rgba(0, 0, 0, 0.04), 0 16px 24px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.04);
+  padding: 40px 40px 60px 40px;
 }
 
 .modal_close {
-    position: absolute;
-    top: 50px;
-    right: 40px;
-    cursor: pointer;
-    z-index: 100;
+  position: absolute;
+  top: 50px;
+  right: 40px;
+  cursor: pointer;
+  z-index: 100;
 }
 
 .modal_component {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .modal_ingredient_container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: calc(100% - 120px);
-    margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 120px);
+  margin: 0 auto;
 }
 
 .modal_ingredient_title {
-    font-size: 36px;
-    font-weight: 700;
+  font-size: 36px;
+  font-weight: 700;
 }
 
 .modal_ingredient_name {
-    font-size: 24px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 32px;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
 }
 
 .modal_ingredient_item {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal_ingredient_item > span {
-    text-align: center;
-    color: #8585AD;
-    margin-bottom: 8px;
+  text-align: center;
+  color: #8585AD;
+  margin-bottom: 8px;
 }
 
 .modal_ingredient_item > span:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .modal_order_number {
-    font-size: 144px;
-    text-shadow: 0 0 16px rgba(51, 51, 255, 0.25), 0 0 8px rgba(51, 51, 255, 0.25), 0 4px 32px rgba(51, 51, 255, 0.5);
-    text-align: center;
-    margin-top: 80px;
-    line-height: 1;
+  font-size: 144px;
+  text-shadow: 0 0 16px rgba(51, 51, 255, 0.25), 0 0 8px rgba(51, 51, 255, 0.25), 0 4px 32px rgba(51, 51, 255, 0.5);
+  text-align: center;
+  margin-top: 80px;
+  line-height: 1;
 }
 
 .modal_order_title {
-    text-align: center;
-    margin-top: 32px;
-    font-size: 24px;
+  text-align: center;
+  margin-top: 32px;
+  font-size: 24px;
 }
 
 .modal_order_icon {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    margin-top: 60px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 60px;
 }
 
 .modal_order_text {
-    font-size: 16px;
-    text-align: center;
-    margin-top: 60px;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 60px;
 }
 
 .modal_order_text_primary {
-    font-size: 16px;
-    text-align: center;
-    margin-top: 8px;
-    color: #8585AD;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 8px;
+  color: #8585AD;
 }

@@ -16,60 +16,54 @@ function App() {
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalSource, setModalSource] = React.useState('order');
   const [order, setOrder] = React.useState([
-      "60d3b41abdacab0026a733c6",
-      "60d3b41abdacab0026a733ce",
-      "60d3b41abdacab0026a733c9",
-      "60d3b41abdacab0026a733d1",
-      "60d3b41abdacab0026a733d4",
-      "60d3b41abdacab0026a733d0",
-      "60d3b41abdacab0026a733d0"
-  ])
+    '60d3b41abdacab0026a733c6',
+    '60d3b41abdacab0026a733ce',
+    '60d3b41abdacab0026a733c9',
+    '60d3b41abdacab0026a733d1',
+    '60d3b41abdacab0026a733d4',
+    '60d3b41abdacab0026a733d0',
+    '60d3b41abdacab0026a733d0'
+  ]);
 
-  const apiRequest =   'https://norma.nomoreparties.space/api/ingredients '
+  const apiRequest = 'https://norma.nomoreparties.space/api/ingredients';
 
   React.useEffect(() => {
-      fetch(apiRequest)
-          .then(res => res.json())
-          .then(data => setIngredients(data.data))
-          .catch(error => console.warn(error))
-  }, [])
-
-  document.addEventListener('keydown', (e) => {
-     if (modalVisible && e.key === 'Escape') {
-         setModalVisible(false);
-     }
-  })
+    fetch(apiRequest)
+      .then(res => res.json())
+      .then(data => setIngredients(data.data))
+      .catch(err => new Error(`Api request error: ${err}`))
+  }, []);
 
   return (
-    <div className={`App ${modalVisible ? 'scroll_hidden' : ''}`}>
+    <main className="App">
       <AppHeader activeMenuItemId={activeMenuItemId} setActiveMenuItemId={setActiveMenuItemId} />
-      <div className="App-container">
-         <BurgerIngredients
-             ingredients={ingredients}
-             order={order}
-             activeTab={activeTab}
-             setActiveTab={setActiveTab}
-             setModalVisible={setModalVisible}
-             setModalSource={setModalSource}
-             setActiveIngredient={setActiveIngredient}
-         />
-         <BurgerConstructor
-             ingredients={ingredients}
-             setModalVisible={setModalVisible}
-             setModalSource={setModalSource}
-             order={order}
-         />
-      </div>
-        <div style={{overflow: 'hidden'}}>{
-            modalVisible &&
-            <Modal setModalVisible={setModalVisible}>
-                <>
-                    {modalSource === 'ingredient' && <IngredientDetails activeIngredient={activeIngredient} />}
-                    {modalSource === 'order' && <OrderDetails />}
-                </>
-            </Modal>
-        }</div>
-    </div>
+      <article className="App-container">
+        <BurgerIngredients
+          ingredients={ingredients}
+          order={order}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          setModalVisible={setModalVisible}
+          setModalSource={setModalSource}
+          setActiveIngredient={setActiveIngredient}
+        />
+        <BurgerConstructor
+          ingredients={ingredients}
+          setModalVisible={setModalVisible}
+          setModalSource={setModalSource}
+          order={order}
+        />
+      </article>
+      <div style={{overflow: 'hidden'}}>{
+        modalVisible &&
+        <Modal setModalVisible={setModalVisible} modalVisible={modalVisible}>
+          <>
+            {modalSource === 'ingredient' && <IngredientDetails activeIngredient={activeIngredient} />}
+            {modalSource === 'order' && <OrderDetails />}
+          </>
+        </Modal>
+      }</div>
+    </main>
   );
 }
 

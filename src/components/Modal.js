@@ -9,11 +9,24 @@ import styles from '../styles/modal.module.css';
 
 const modalRoot = document.getElementById("react-modals");
 
-function Modal ({ children, setModalVisible }) {
+function Modal ({ children, setModalVisible, modalVisible }) {
 
     const toggleModalVisible = (flag) => {
         setModalVisible(flag);
     }
+
+    React.useEffect(() => {
+        const keyDownFn = (e) => {
+            if (modalVisible && e.key === 'Escape') {
+                setModalVisible(false);
+            }
+        }
+        document.addEventListener('keydown', (e) => keyDownFn(e))
+
+        return () => {
+            document.removeEventListener('keydown', (e) => keyDownFn(e))
+        }
+    }, [])
 
     return PortalReactDOM.createPortal(
         <ModalOverlay className={styles.modal_overlay} setModalVisible={setModalVisible}>
@@ -30,7 +43,8 @@ function Modal ({ children, setModalVisible }) {
 
 Modal.propTypes = {
     children: PropTypes.element.isRequired,
-    setModalVisible: PropTypes.func.isRequired
+    setModalVisible: PropTypes.func.isRequired,
+    modalVisible: PropTypes.bool.isRequired
 };
 
 export default Modal;
