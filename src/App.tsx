@@ -13,6 +13,15 @@ function App() {
   const [activeTab, setActiveTab] = React.useState({ id: 0, name: 'Булки' });
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalSource, setModalSource] = React.useState(null);
+  const [order, setOrder] = React.useState([
+      "60d3b41abdacab0026a733c6",
+      "60d3b41abdacab0026a733ce",
+      "60d3b41abdacab0026a733c9",
+      "60d3b41abdacab0026a733d1",
+      "60d3b41abdacab0026a733d4",
+      "60d3b41abdacab0026a733d0",
+      "60d3b41abdacab0026a733d0"
+  ])
 
   React.useEffect(() => {
       fetch('https://norma.nomoreparties.space/api/ingredients ')
@@ -33,6 +42,7 @@ function App() {
       <div className="App-container">
          <BurgerIngredients
              ingredients={ingredients}
+             order={order}
              activeTab={activeTab}
              setActiveTab={setActiveTab}
              setModalVisible={setModalVisible}
@@ -43,6 +53,7 @@ function App() {
              ingredients={ingredients}
              setModalVisible={setModalVisible}
              setModalSource={setModalSource}
+             order={order}
          />
       </div>
         <div style={{overflow: 'hidden'}}>{

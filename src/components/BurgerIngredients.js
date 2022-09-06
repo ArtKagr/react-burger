@@ -2,7 +2,7 @@ import { Tab, CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger
 import React from 'react';
 import styles from './burger-ingredients.module.css'
 
-function BurgerIngredients ({ ingredients, activeTab, setActiveTab, setModalVisible, setModalSource, setActiveIngredient }) {
+function BurgerIngredients ({ ingredients, order, activeTab, setActiveTab, setModalVisible, setModalSource, setActiveIngredient }) {
     const [tabs, setTabs] = React.useState([
         { id: 0, name: 'Булки', type: 'bun', items: [] },
         { id: 1, name: 'Соусы', type: 'sauce', items: [] },
@@ -33,6 +33,12 @@ function BurgerIngredients ({ ingredients, activeTab, setActiveTab, setModalVisi
         setActiveIngredient(ingredient);
     }
 
+    const currentIngredientCount = ingredientId => {
+        return order.reduce((acc, id) => {
+            return id === ingredientId ? acc + 1 : acc
+        }, 0)
+    }
+
     return (
         <div className={styles.burger_ingredients}>
             <span className={styles.burger_ingredients_title}>Соберите бургер</span>
@@ -50,7 +56,7 @@ function BurgerIngredients ({ ingredients, activeTab, setActiveTab, setModalVisi
                         <div key={`category-${tab.id}`} className={styles.ingredients_category}>
                             {tab.items.map((ingredient) => (
                                 <div key={ingredient._id} className={styles.ingredient} onClick={() => updateStates(true, ingredient)}>
-                                    <Counter className={styles.ingredient_counter} count={1} />
+                                    {order.includes(ingredient._id) && <Counter className={styles.ingredient_counter} count={currentIngredientCount(ingredient._id)} />}
                                     <img src={ingredient.image} alt={`ingredient_${ingredient._id}`} />
                                     <div className={styles.ingredient_container}>
                                         <span className={styles.ingredient_container_number}>{ingredient.price}</span>

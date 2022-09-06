@@ -30,7 +30,7 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 40px;
+    margin-bottom: 16px;
 }
 
 .ingredients_category_title {
@@ -40,12 +40,14 @@
 }
 
 .ingredient {
-    width: 50%;
+    width: calc(50% - 8px);
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    margin-bottom: 24px;
+    margin-right: 8px;
 }
 
 .ingredient > span {

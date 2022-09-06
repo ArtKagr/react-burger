@@ -4,16 +4,7 @@ import React from 'react';
 import styles from './burger-constructor.module.css'
 import { IngredientType } from "../proptypes/proptypes";
 
-function BurgerConstructor ({ ingredients, setModalVisible, setModalSource }) {
-    const [order, setOrder] = React.useState([
-        "60d3b41abdacab0026a733c6",
-        "60d3b41abdacab0026a733ce",
-        "60d3b41abdacab0026a733c9",
-        "60d3b41abdacab0026a733d1",
-        "60d3b41abdacab0026a733d4",
-        "60d3b41abdacab0026a733d0",
-        "60d3b41abdacab0026a733d0"
-    ])
+function BurgerConstructor ({ ingredients, setModalVisible, setModalSource, order }) {
 
     const currentOrder = React.useMemo(() => {
         let result = {bun: {}, array: []}
@@ -38,11 +29,7 @@ function BurgerConstructor ({ ingredients, setModalVisible, setModalSource }) {
 
     const totalPrice = React.useMemo(() => {
         return currentOrder.array.reduce((acc, ingredient) => {
-            if (ingredient && ingredient.price) {
-                return acc + ingredient.price
-            } else {
-                return acc + 0
-            }
+            return ingredient && ingredient.price ? acc + ingredient.price : acc + 0
         }, 0) + (currentOrder.bun.price * 2)
     }, [currentOrder.bun, currentOrder.array])
 
@@ -55,7 +42,9 @@ function BurgerConstructor ({ ingredients, setModalVisible, setModalSource }) {
         <div className={styles.burger_constructor}>
             <div className={styles.burger_constructor_items}>
                 {currentOrder.bun && <div className={`${styles.burger_constructor_item} ${styles.burger_constructor_item_bun}`}>
-                    <DragIcon type={'primary'} />
+                    <span className={styles.burger_constructor_drag_icon}>
+                        <DragIcon type={'primary'} />
+                    </span>
                     <ConstructorElement
                         text={currentOrder.bun.name}
                         thumbnail={currentOrder.bun.image}
@@ -68,7 +57,9 @@ function BurgerConstructor ({ ingredients, setModalVisible, setModalSource }) {
                     {currentOrder.array.map((item, index) => (
                         item && item._id &&
                         <div className={styles.burger_constructor_item}>
-                            <DragIcon type={'primary'} />
+                            <span className={styles.burger_constructor_drag_icon}>
+                                <DragIcon type={'primary'} />
+                            </span>
                             <ConstructorElement
                                 text={item.name}
                                 thumbnail={item.image}
@@ -78,7 +69,9 @@ function BurgerConstructor ({ ingredients, setModalVisible, setModalSource }) {
                     }
                 </div>
                 {currentOrder.bun && <div className={`${styles.burger_constructor_item} ${styles.burger_constructor_item_bun}`}>
-                    <DragIcon type={'primary'} />
+                    <span className={styles.burger_constructor_drag_icon}>
+                        <DragIcon type={'primary'} />
+                    </span>
                     <ConstructorElement
                         text={currentOrder.bun.name}
                         thumbnail={currentOrder.bun.image}
@@ -102,7 +95,8 @@ function BurgerConstructor ({ ingredients, setModalVisible, setModalSource }) {
 BurgerConstructor.propTypes = {
    ingredients: PropTypes.arrayOf(IngredientType.isRequired).isRequired,
    setModalVisible: PropTypes.func.isRequired,
-   setModalSource: PropTypes.func.isRequired
+   setModalSource: PropTypes.func.isRequired,
+   order: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 }
 
 export default BurgerConstructor;

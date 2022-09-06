@@ -22,10 +22,16 @@
 .burger_constructor_item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
+    width: calc(100% - 8px);
     cursor: pointer;
     margin-bottom: 16px;
+    margin-right: 8px;
+}
+
+.burger_constructor_drag_icon {
+    width: 24px;
+    display: flex;
+    margin-right: 8px;
 }
 
 .burger_constructor_item:last-child {
@@ -38,7 +44,6 @@
 
 .burger_constructor_item > div {
     width: 100%;
-    flex: 1;
     max-width: 100%;
 }
 
@@ -46,14 +51,17 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 40px;
+    width: calc(100% - 20px);
 }
 
 .burger_constructor_container_price {
     display: flex;
-    align-items: center
+    align-items: center;
+    margin-right: 40px;
 }
 
 .burger_constructor_container_price > span {
     font-size: 40px;
     color: white;
+    margin-right: 8px;
 }
