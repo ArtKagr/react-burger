@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from '../modal.module.css';
+import { IngredientType } from '../../proptypes/proptypes';
+import styles from '../../styles/modal.module.css';
 
 function IngredientDetails ({ activeIngredient }) {
     return (
@@ -28,5 +29,9 @@ function IngredientDetails ({ activeIngredient }) {
         </div>
     )
 }
+
+IngredientDetails.propTypes = {
+    activeIngredient: IngredientType.isRequired
+};
 
 export default IngredientDetails;

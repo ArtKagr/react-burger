@@ -1,16 +1,15 @@
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import PropTypes from 'prop-types';
+import { IngredientType } from "../proptypes/proptypes";
 import React from 'react';
-import IngredientDetails from "./modal/IngredientDetails";
-import OrderDetails from "./modal/OrderDetails";
-
 import PortalReactDOM from 'react-dom';
 // createPortal как метод ReactDom из библиотеки 'react-dom/client' не определяется
-
 import ModalOverlay from "./ModalOverlay";
-import styles from './modal.module.css';
+import styles from '../styles/modal.module.css';
+
 const modalRoot = document.getElementById("react-modals");
 
-function Modal ({ source, activeIngredient, setModalVisible }) {
+function Modal ({ children, setModalVisible }) {
 
     const toggleModalVisible = (flag) => {
         setModalVisible(flag);
@@ -22,12 +21,16 @@ function Modal ({ source, activeIngredient, setModalVisible }) {
                 <div className={styles.modal_close} onClick={() => toggleModalVisible(false)}>
                     <CloseIcon type={'primary'} />
                 </div>
-                {source === 'ingredient' && <IngredientDetails activeIngredient={activeIngredient} />}
-                {source === 'order' && <OrderDetails />}
+                {children}
             </div>
         </ModalOverlay>,
         modalRoot
     )
 }
+
+Modal.propTypes = {
+    children: PropTypes.element.isRequired,
+    setModalVisible: PropTypes.func.isRequired
+};
 
 export default Modal;

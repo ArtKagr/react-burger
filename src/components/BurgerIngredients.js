@@ -1,13 +1,15 @@
 import { Tab, CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components';
 import React from 'react';
-import styles from './burger-ingredients.module.css'
+import { IngredientType, TabType } from "../proptypes/proptypes";
+import PropTypes from "prop-types";
+import styles from '../styles/burger-ingredients.module.css'
 
 function BurgerIngredients ({ ingredients, order, activeTab, setActiveTab, setModalVisible, setModalSource, setActiveIngredient }) {
     const [tabs, setTabs] = React.useState([
         { id: 0, name: 'Булки', type: 'bun', items: [] },
         { id: 1, name: 'Соусы', type: 'sauce', items: [] },
         { id: 2, name: 'Начинки', type: 'main', items: [] }
-    ])
+    ]);
 
     React.useEffect(() => {
         setTabs((items) => {
@@ -25,19 +27,19 @@ function BurgerIngredients ({ ingredients, order, activeTab, setActiveTab, setMo
             })
             return result
         })
-    }, [JSON.stringify(ingredients)])
+    }, [JSON.stringify(ingredients)]);
 
     const updateStates = (flag, ingredient) => {
         setModalVisible(flag);
         setModalSource('ingredient');
         setActiveIngredient(ingredient);
-    }
+    };
 
     const currentIngredientCount = ingredientId => {
         return order.reduce((acc, id) => {
             return id === ingredientId ? acc + 1 : acc
         }, 0)
-    }
+    };
 
     return (
         <div className={styles.burger_ingredients}>
@@ -72,5 +74,15 @@ function BurgerIngredients ({ ingredients, order, activeTab, setActiveTab, setMo
         </div>
     )
 }
+
+BurgerIngredients.propTypes = {
+    ingredients: PropTypes.arrayOf(IngredientType).isRequired,
+    order: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    activeTab: TabType.isRequired,
+    setActiveTab: PropTypes.func,
+    setModalVisible: PropTypes.func,
+    setModalSource: PropTypes.func,
+    setActiveIngredient: PropTypes.func
+};
 
 export default BurgerIngredients;

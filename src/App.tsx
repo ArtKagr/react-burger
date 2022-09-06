@@ -5,14 +5,16 @@ import AppHeader from "./components/AppHeader";
 import BurgerConstructor from "./components/BurgerConstructor";
 import BurgerIngredients from "./components/BurgerIngredients";
 import Modal from "./components/Modal";
+import IngredientDetails from "../src/components/modal/IngredientDetails";
+import OrderDetails from "../src/components/modal/OrderDetails";
 
 function App() {
   const [activeMenuItemId, setActiveMenuItemId] = React.useState(0);
   const [ingredients, setIngredients] = React.useState([]);
   const [activeIngredient, setActiveIngredient] = React.useState({});
-  const [activeTab, setActiveTab] = React.useState({ id: 0, name: 'Булки' });
+  const [activeTab, setActiveTab] = React.useState({ id: 0, name: 'Булки', type: 'bun', items: [] });
   const [modalVisible, setModalVisible] = React.useState(false);
-  const [modalSource, setModalSource] = React.useState(null);
+  const [modalSource, setModalSource] = React.useState('order');
   const [order, setOrder] = React.useState([
       "60d3b41abdacab0026a733c6",
       "60d3b41abdacab0026a733ce",
@@ -23,8 +25,10 @@ function App() {
       "60d3b41abdacab0026a733d0"
   ])
 
+  const apiRequest =   'https://norma.nomoreparties.space/api/ingredients '
+
   React.useEffect(() => {
-      fetch('https://norma.nomoreparties.space/api/ingredients ')
+      fetch(apiRequest)
           .then(res => res.json())
           .then(data => setIngredients(data.data))
           .catch(error => console.warn(error))
@@ -57,7 +61,14 @@ function App() {
          />
       </div>
         <div style={{overflow: 'hidden'}}>{
-            modalVisible && <Modal source={modalSource} activeIngredient={activeIngredient} setModalVisible={setModalVisible}></Modal>}</div>
+            modalVisible &&
+            <Modal setModalVisible={setModalVisible}>
+                <>
+                    {modalSource === 'ingredient' && <IngredientDetails activeIngredient={activeIngredient} />}
+                    {modalSource === 'order' && <OrderDetails />}
+                </>
+            </Modal>
+        }</div>
     </div>
   );
 }

@@ -1,10 +1,10 @@
-import {Button, ConstructorElement, CurrencyIcon, DragIcon} from '@ya.praktikum/react-developer-burger-ui-components';
+import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
 import React from 'react';
-import styles from './burger-constructor.module.css'
+import styles from '../styles/burger-constructor.module.css'
 import { IngredientType } from "../proptypes/proptypes";
 
-function BurgerConstructor ({ ingredients, setModalVisible, setModalSource, order }) {
+function BurgerConstructor ({ ingredients, order, setModalVisible, setModalSource }) {
 
     const currentOrder = React.useMemo(() => {
         let result = {bun: {}, array: []}
@@ -25,18 +25,18 @@ function BurgerConstructor ({ ingredients, setModalVisible, setModalSource, orde
             }, {bun: {}, array: []})
         }
         return result
-    }, [JSON.stringify(order), JSON.stringify(ingredients)])
+    }, [JSON.stringify(order), JSON.stringify(ingredients)]);
 
     const totalPrice = React.useMemo(() => {
         return currentOrder.array.reduce((acc, ingredient) => {
             return ingredient && ingredient.price ? acc + ingredient.price : acc + 0
         }, 0) + (currentOrder.bun.price * 2)
-    }, [currentOrder.bun, currentOrder.array])
+    }, [currentOrder.bun, currentOrder.array]);
 
     const toggleModalVisible = flag => {
         setModalVisible(flag);
         setModalSource('order');
-    }
+    };
 
     return (
         <div className={styles.burger_constructor}>
@@ -93,10 +93,10 @@ function BurgerConstructor ({ ingredients, setModalVisible, setModalSource, orde
 }
 
 BurgerConstructor.propTypes = {
-   ingredients: PropTypes.arrayOf(IngredientType.isRequired).isRequired,
+   ingredients: PropTypes.arrayOf(IngredientType).isRequired,
+   order: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
    setModalVisible: PropTypes.func.isRequired,
-   setModalSource: PropTypes.func.isRequired,
-   order: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
-}
+   setModalSource: PropTypes.func.isRequired
+};
 
 export default BurgerConstructor;

@@ -13,4 +13,11 @@ export const IngredientType = PropTypes.shape({
     type: PropTypes.string,
     __v: PropTypes.number,
     _id: PropTypes.string
-})
+});
+
+export const TabType = PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    items: PropTypes.arrayOf(IngredientType).isRequired
+});
