@@ -1,7 +1,7 @@
 import { Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
 import React from 'react';
-import styles from '../styles/app-header.module.css';
+import styles from './app-header.module.css';
 
 function AppHeader ({ activeMenuItemId, setActiveMenuItemId }) {
   const [menuItems, setMenuItems] = React.useState([
@@ -10,7 +10,7 @@ function AppHeader ({ activeMenuItemId, setActiveMenuItemId }) {
   ]);
 
   return (
-    <main className={styles.menu}>
+    <header className={styles.menu}>
       <ul className={styles.menu_items}>
         {menuItems.map((menuItem) => (
           <li
@@ -31,7 +31,7 @@ function AppHeader ({ activeMenuItemId, setActiveMenuItemId }) {
         <ProfileIcon type={'secondary'} />
         <span>Личный кабинет</span>
       </div>
-    </main>
+    </header>
   );
 }
 

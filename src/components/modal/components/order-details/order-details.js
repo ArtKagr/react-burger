@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from '../../styles/modal.module.css';
-import { orderDetails } from "../../utils/data";
+import styles from './order-details.module.css';
+import { orderDetails } from "../../../../utils/data";
 
 function OrderDetails () {
   return (
-    <div className={styles.modal_component}>
+    <div className={styles.modal_order_component}>
       <span className={styles.modal_order_number}>{orderDetails.orderNumber}</span>
       <span className={styles.modal_order_title}>идентификатор заказа</span>
       {orderDetails.status === 'success' &&

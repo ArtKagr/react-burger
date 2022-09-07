@@ -1,8 +1,8 @@
 import { Tab, CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components';
 import React from 'react';
-import { IngredientType, TabType } from "../proptypes/proptypes";
+import { IngredientType, TabType } from "../../proptypes/proptypes";
 import PropTypes from "prop-types";
-import styles from '../styles/burger-ingredients.module.css'
+import styles from './burger-ingredients.module.css'
 
 function BurgerIngredients ({ ingredients, order, activeTab, setActiveTab, setModalVisible, setModalSource, setActiveIngredient }) {
   const [tabs, setTabs] = React.useState([
@@ -53,15 +53,15 @@ function BurgerIngredients ({ ingredients, order, activeTab, setActiveTab, setMo
       }</ul>
       <ul className={styles.ingredients}>
         {tabs.map((tab) => (
-          <>
-            <h2 className={styles.ingredients_category_title} key={`name-${tab.id}`}>{tab.name}</h2>
+          <React.Fragment key={`name-${tab.id}`}>
+            <h2 className={styles.ingredients_category_title}>{tab.name}</h2>
             <li key={`category-${tab.id}`} className={styles.ingredients_category}>
               {tab.items.map((ingredient) => (
-              <div className={styles.ingredient} onClick={() => updateStates(true, ingredient)}>
+              <div key={`ingredient_${ingredient._id}`} className={styles.ingredient} onClick={() => updateStates(true, ingredient)}>
                 {order.includes(ingredient._id) &&
                     <Counter className={styles.ingredient_counter} count={currentIngredientCount(ingredient._id)} />
                 }
-                <img src={ingredient.image} alt={`ingredient_${ingredient._id}`} />
+                <img src={ingredient.image} alt={`ingredient_image_${ingredient._id}`} />
                 <div className={styles.ingredient_container}>
                   <span className={styles.ingredient_container_number}>{ingredient.price}</span>
                   <CurrencyIcon key={`currency-icon-${ingredient._id}`} type={'primary'} />
@@ -69,7 +69,7 @@ function BurgerIngredients ({ ingredients, order, activeTab, setActiveTab, setMo
                 <span>{ingredient.name}</span>
               </div>))}
             </li>
-          </>
+          </React.Fragment>
         ))}
       </ul>
     </main>

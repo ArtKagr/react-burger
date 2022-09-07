@@ -40,6 +40,7 @@
 
 .burger_constructor_item_bun {
   width: calc(100% - 18px);
+  margin-right: 0;
 }
 
 .burger_constructor_item > div {

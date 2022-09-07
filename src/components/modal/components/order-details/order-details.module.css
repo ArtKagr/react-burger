@@ -1,0 +1,39 @@
+.modal_order_component {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal_order_number {
+  font-size: 144px;
+  text-shadow: 0 0 16px rgba(51, 51, 255, 0.25), 0 0 8px rgba(51, 51, 255, 0.25), 0 4px 32px rgba(51, 51, 255, 0.5);
+  text-align: center;
+  margin-top: 80px;
+  line-height: 1;
+}
+
+.modal_order_title {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 24px;
+}
+
+.modal_order_icon {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.modal_order_text {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.modal_order_text_primary {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 8px;
+  color: #8585AD;
+}

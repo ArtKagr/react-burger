@@ -1,12 +1,12 @@
 import '@ya.praktikum/react-developer-burger-ui-components';
 import React from 'react';
-import './App.css';
-import AppHeader from "./components/AppHeader";
-import BurgerConstructor from "./components/BurgerConstructor";
-import BurgerIngredients from "./components/BurgerIngredients";
-import Modal from "./components/Modal";
-import IngredientDetails from "../src/components/modal/IngredientDetails";
-import OrderDetails from "../src/components/modal/OrderDetails";
+import './app.css';
+import AppHeader from "../app-header/app-header";
+import BurgerConstructor from "../burger-constructor/burger-constructor";
+import BurgerIngredients from "../burger-ingredients/burger-ingredients";
+import Modal from "../modal/modal";
+import IngredientDetails from "../modal/components/ingredient-details/ingredient-details";
+import OrderDetails from "../modal/components/order-details/order-details";
 
 function App() {
   const [activeMenuItemId, setActiveMenuItemId] = React.useState(0);
@@ -29,15 +29,24 @@ function App() {
 
   React.useEffect(() => {
     fetch(apiRequest)
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка ${res.status}`);
+      })
       .then(data => setIngredients(data.data))
       .catch(err => new Error(`Api request error: ${err}`))
   }, []);
 
+  const closePopup = () => {
+    setModalVisible(false);
+  };
+
   return (
-    <main className="App">
+    <div className="App">
       <AppHeader activeMenuItemId={activeMenuItemId} setActiveMenuItemId={setActiveMenuItemId} />
-      <article className="App-container">
+      <main className="App-container">
         <BurgerIngredients
           ingredients={ingredients}
           order={order}
@@ -53,17 +62,17 @@ function App() {
           setModalSource={setModalSource}
           order={order}
         />
-      </article>
-      <div style={{overflow: 'hidden'}}>{
+      </main>
+      <div>{
         modalVisible &&
-        <Modal setModalVisible={setModalVisible} modalVisible={modalVisible}>
+        <Modal closePopup={closePopup} modalVisible={modalVisible}>
           <>
             {modalSource === 'ingredient' && <IngredientDetails activeIngredient={activeIngredient} />}
             {modalSource === 'order' && <OrderDetails />}
           </>
         </Modal>
       }</div>
-    </main>
+    </div>
   );
 }
 

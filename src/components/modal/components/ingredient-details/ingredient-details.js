@@ -1,10 +1,10 @@
 import React from 'react';
-import { IngredientType } from '../../proptypes/proptypes';
-import styles from '../../styles/modal.module.css';
+import { IngredientType } from '../../../../proptypes/proptypes';
+import styles from './ingredient-details.module.css';
 
 function IngredientDetails ({ activeIngredient }) {
   return (
-    <div className={styles.modal_component}>
+    <div className={styles.modal_ingredient_component}>
       <span className={styles.modal_ingredient_title}>Детали ингредиента</span>
       <img src={activeIngredient.image} alt={`ingredient_${activeIngredient._id}`} />
       <span className={styles.modal_ingredient_name}>{activeIngredient.name}</span>
