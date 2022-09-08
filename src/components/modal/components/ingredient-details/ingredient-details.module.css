@@ -1,0 +1,40 @@
+.modal_ingredient_component {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal_ingredient_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 120px);
+  margin: 0 auto;
+}
+
+.modal_ingredient_title {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.modal_ingredient_name {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.modal_ingredient_item {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal_ingredient_item > span {
+  text-align: center;
+  color: #8585AD;
+  margin-bottom: 8px;
+}
+
+.modal_ingredient_item > span:last-child {
+  margin-bottom: 0;
+}
