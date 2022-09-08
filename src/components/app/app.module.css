@@ -1,11 +1,11 @@
-.App {
+.app {
   display: flex;
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
 }
 
-.App-container {
+.app_container {
   display: flex;
   width: 100%;
   justify-content: center;

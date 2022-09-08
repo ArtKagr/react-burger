@@ -1,12 +1,12 @@
 import '@ya.praktikum/react-developer-burger-ui-components';
 import React from 'react';
-import './app.css';
 import AppHeader from "../app-header/app-header";
 import BurgerConstructor from "../burger-constructor/burger-constructor";
 import BurgerIngredients from "../burger-ingredients/burger-ingredients";
 import Modal from "../modal/modal";
 import IngredientDetails from "../modal/components/ingredient-details/ingredient-details";
 import OrderDetails from "../modal/components/order-details/order-details";
+import styles from './app.module.css'
 
 function App() {
   const [activeMenuItemId, setActiveMenuItemId] = React.useState(0);
@@ -44,9 +44,9 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className={styles.app}>
       <AppHeader activeMenuItemId={activeMenuItemId} setActiveMenuItemId={setActiveMenuItemId} />
-      <main className="App-container">
+      <main className={styles.app_container}>
         <BurgerIngredients
           ingredients={ingredients}
           order={order}
@@ -63,15 +63,13 @@ function App() {
           order={order}
         />
       </main>
-      <div>{
-        modalVisible &&
-        <Modal closePopup={closePopup} modalVisible={modalVisible}>
+      {modalVisible &&
+        <Modal closePopup={closePopup}>
           <>
             {modalSource === 'ingredient' && <IngredientDetails activeIngredient={activeIngredient} />}
             {modalSource === 'order' && <OrderDetails />}
           </>
-        </Modal>
-      }</div>
+        </Modal>}
     </div>
   );
 }

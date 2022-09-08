@@ -7,11 +7,11 @@ import styles from './modal.module.css';
 
 const modalRoot = document.getElementById("react-modals");
 
-function Modal ({ children, closePopup, modalVisible }) {
+function Modal ({ children, closePopup }) {
 
   React.useEffect(() => {
     function keyDownFn (e) {
-      if (modalVisible && e.key === 'Escape') {
+      if (e.key === 'Escape') {
         closePopup();
       }
     }
@@ -35,8 +35,7 @@ function Modal ({ children, closePopup, modalVisible }) {
 
 Modal.propTypes = {
   children: PropTypes.element.isRequired,
-  closePopup: PropTypes.func.isRequired,
-  modalVisible: PropTypes.bool.isRequired
+  closePopup: PropTypes.func.isRequired
 };
 
 export default Modal;
