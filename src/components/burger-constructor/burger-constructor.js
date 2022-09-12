@@ -49,7 +49,7 @@ function BurgerConstructor ({ ingredients, order, setModalVisible, setModalSourc
             type={'top'}
           />
         </div>}
-        <article className={styles.burger_constructor_items_container}>
+        <section className={styles.burger_constructor_items_container}>
           {currentOrder.array.map((item, index) => (
             item && item._id &&
             <div key={`constructor_element_${item._id}_${index}`} className={styles.burger_constructor_item}>
@@ -63,7 +63,7 @@ function BurgerConstructor ({ ingredients, order, setModalVisible, setModalSourc
               />
             </div>))
           }
-        </article>
+        </section>
         {currentOrder.bun && <div className={`${styles.burger_constructor_item} ${styles.burger_constructor_item_bun}`}>
           <i className={styles.burger_constructor_drag_icon} />
           <ConstructorElement
@@ -76,10 +76,10 @@ function BurgerConstructor ({ ingredients, order, setModalVisible, setModalSourc
         </div>}
       </li>
       <div className={styles.burger_constructor_container}>
-        <article className={styles.burger_constructor_container_price}>
+        <div className={styles.burger_constructor_container_price}>
           <span>{totalPrice}</span>
           <CurrencyIcon type={'primary'} />
-        </article>
+        </div>
         <Button name={'Оформить заказ'} onClick={() => toggleModalVisible(true)}>Оформить заказ</Button>
       </div>
     </section>
